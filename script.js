@@ -101,8 +101,8 @@ yesBtn.addEventListener("click", () => {
   questionContainer.style.transform = "translate(-50%, -50%) scale(0.9)";
   
   setTimeout(() => {
-    questionContainer.style.display = "none";
-    heartLoader.style.display = "inherit";
+  questionContainer.style.display = "none";
+  heartLoader.style.display = "inherit";
   }, 300);
 
   const timeoutId = setTimeout(() => {
@@ -126,7 +126,7 @@ yesBtn.addEventListener("click", () => {
     }, 100);
     
     if (gifResult) {
-      gifResult.play();
+    gifResult.play();
     }
   }, 3000);
 });
