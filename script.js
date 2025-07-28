@@ -4,6 +4,8 @@ const gifResult = document.querySelector(".gif-result");
 const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
+const videoContainer = document.querySelector(".video-container");
+const youtubeVideo = document.querySelector("#youtube-video");
 
 const cuteMessages = [
   "Are you sure? 🥺",
@@ -113,9 +115,19 @@ yesBtn.addEventListener("click", () => {
       resultContainer.style.opacity = "1";
       resultContainer.style.transform = "translate(-50%, -50%) scale(1)";
       resultContainer.style.transition = "all 0.5s ease";
+      
+      // Show video container and play immediately after result appears
+      videoContainer.classList.add("show");
+      
+      // Play the YouTube video immediately
+      const videoSrc = youtubeVideo.src;
+      youtubeVideo.src = videoSrc + "&autoplay=1";
+      
     }, 100);
     
-    gifResult.play();
+    if (gifResult) {
+      gifResult.play();
+    }
   }, 3000);
 });
 

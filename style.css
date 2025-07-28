@@ -232,6 +232,27 @@
       opacity: 1;
     }
   }
+
+  .video-container {
+    margin-top: 2rem;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease;
+  }
+
+  .video-container.show {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .video-container iframe {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
   
   .cssload-main {
     display: none;
