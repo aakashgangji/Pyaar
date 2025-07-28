@@ -21,16 +21,33 @@ const cuteMessages = [
 let messageIndex = 0;
 
 noBtn.addEventListener("mouseover", () => {
-  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
-  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+  // Get button dimensions
+  const buttonWidth = noBtn.offsetWidth;
+  const buttonHeight = noBtn.offsetHeight;
+  
+  // Calculate safe boundaries (keeping button fully visible)
+  const maxX = window.innerWidth - buttonWidth - 50;
+  const maxY = window.innerHeight - buttonHeight - 50;
+  const minX = 50;
+  const minY = 50;
+  
+  // Generate random position within safe bounds
+  const newX = Math.floor(Math.random() * (maxX - minX)) + minX;
+  const newY = Math.floor(Math.random() * (maxY - minY)) + minY;
 
+  // Set fixed positioning and new coordinates
   noBtn.style.position = "fixed";
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
+  noBtn.style.right = "auto";
+  noBtn.style.bottom = "auto";
+  noBtn.style.zIndex = "1000";
   
+  // Change button text to cute messages
   noBtn.textContent = cuteMessages[messageIndex % cuteMessages.length];
   messageIndex++;
   
+  // Add a cute shake animation
   noBtn.style.animation = "shake 0.5s ease-in-out";
   setTimeout(() => {
     noBtn.style.animation = "";
