@@ -239,6 +239,8 @@
     opacity: 0;
     transform: scale(0.8);
     transition: all 0.8s ease;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .video-container.show {
@@ -250,6 +252,7 @@
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
     max-width: 100%;
+    width: 100%;
     height: auto;
     aspect-ratio: 16/9;
   }
@@ -608,6 +611,17 @@
     .cssload-main {
       top: 25%;
     }
+
+    .video-container {
+      margin-top: 1.5rem;
+      padding: 0 10px;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+      width: 100%;
+      height: 200px;
+    }
   }
 
   @media (max-width: 480px) {
@@ -661,6 +675,18 @@
     body::before,
     body::after {
       display: none;
+    }
+
+    .video-container {
+      margin-top: 1rem;
+      padding: 0 5px;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+      width: 100%;
+      height: 180px;
+      border-radius: 10px;
     }
   }
 
