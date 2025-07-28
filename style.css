@@ -14,13 +14,12 @@
     overflow-x: hidden;
   }
 
-  /* Floating background hearts */
   body::before {
     content: "💕";
     position: fixed;
     top: 10%;
     left: 10%;
-    font-size: 2rem;
+    font-size: clamp(1rem, 3vw, 2rem);
     animation: float 6s ease-in-out infinite;
     opacity: 0.3;
   }
@@ -30,7 +29,7 @@
     position: fixed;
     top: 20%;
     right: 15%;
-    font-size: 1.5rem;
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
     animation: float 8s ease-in-out infinite reverse;
     opacity: 0.3;
   }
@@ -50,6 +49,8 @@
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-100%, -50%);
     transition: 0.2s;
+    width: 90%;
+    max-width: 600px;
   }
   
   .question-container {
@@ -58,6 +59,7 @@
     left: 50%;
     transition: 0.2s;
     text-align: center;
+    width: 100%;
   }
   .local-gif {
     width: 100%;
@@ -70,11 +72,12 @@
   }
   
   .question {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 8vw, 3.5rem);
     margin-bottom: 1rem;
     color: #ff6b9d;
     text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.3);
     animation: pulse 2s ease-in-out infinite;
+    line-height: 1.2;
   }
 
   @keyframes pulse {
@@ -83,25 +86,28 @@
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
     color: #ff8fab;
     margin-bottom: 2rem;
     font-weight: 500;
+    line-height: 1.4;
   }
 
   .button-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: clamp(1rem, 4vw, 2rem);
     position: relative;
+    flex-wrap: wrap;
+    margin-top: 2rem;
   }
   .btn {
-    position: absolute;
+    position: relative;
     border: none;
     border-radius: 50px;
-    padding: 15px 30px;
+    padding: clamp(12px, 3vw, 15px) clamp(20px, 5vw, 30px);
     font-family: "Quicksand", sans-serif;
-    font-size: 18px;
+    font-size: clamp(14px, 3.5vw, 18px);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -110,6 +116,8 @@
     transform: scale(1.05);
     box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
     border: 3px solid rgba(255, 255, 255, 0.3);
+    white-space: nowrap;
+    min-width: 120px;
   }
   .btn:hover {
     background: linear-gradient(45deg, #ff8fab, #ffb3d1);
@@ -119,7 +127,6 @@
   }
   
   .yes-btn {
-    right: 54%;
     animation: bounce 2s ease-in-out infinite;
   }
 
@@ -130,9 +137,7 @@
   }
 
   .no-btn {
-    /* Removed absolute positioning to allow JavaScript control */
     position: relative;
-    left: 54%;
   }
   
   .result-container {
@@ -147,19 +152,23 @@
     -moz-transform: translate(-100%, -50%);
     transition: 0.2s;
     text-align: center;
+    width: 100%;
   }
   .gif-result {
     border-radius: 20px;
     margin-bottom: 2rem;
     box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+    width: 100%;
+    max-width: 300px;
   }
   .result-container h2 {
-    font-size: 3.2rem;
+    font-size: clamp(1.8rem, 6vw, 3.2rem);
     text-align: center;
     color: #ff6b9d;
     text-shadow: 2px 2px 4px rgba(255, 107, 157, 0.3);
     margin-bottom: 1rem;
     animation: rainbow 3s ease-in-out infinite;
+    line-height: 1.2;
   }
 
   @keyframes rainbow {
@@ -170,20 +179,21 @@
   }
 
   .love-message {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 3.5vw, 1.3rem);
     color: #ff8fab;
     margin-bottom: 2rem;
     font-weight: 500;
+    line-height: 1.4;
   }
 
   .floating-hearts {
     position: relative;
-    height: 100px;
+    height: clamp(60px, 15vw, 100px);
   }
 
   .floating-hearts .heart {
     position: absolute;
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     animation: floatHeart 4s ease-in-out infinite;
   }
 
@@ -223,7 +233,6 @@
     }
   }
   
-  /* heart loader */
   .cssload-main {
     display: none;
     position: absolute;
@@ -239,7 +248,7 @@
   }
   
   .cssload-main * {
-    font-size: 62px;
+    font-size: clamp(40px, 10vw, 62px);
   }
   
   .cssload-heart {
@@ -545,22 +554,174 @@
     }
   }
 
-  /* Responsive design */
   @media (max-width: 768px) {
-    .question {
-      font-size: 2.5rem;
+    .container {
+      width: 95%;
+      top: 45%;
     }
     
-    .result-container h2 {
-      font-size: 2.2rem;
+    .question-container {
+      top: 35%;
     }
     
-    .btn {
-      padding: 12px 24px;
-      font-size: 16px;
+    .result-container {
+      top: 35%;
     }
     
     .button-container {
+      flex-direction: column;
+      align-items: center;
       gap: 1rem;
+    }
+    
+    .btn {
+      width: 200px;
+      max-width: 80vw;
+    }
+    
+    .local-gif,
+    .gif-result {
+      max-width: 250px;
+    }
+    
+    .cssload-main {
+      top: 25%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      width: 98%;
+      top: 50%;
+    }
+    
+    .question-container {
+      top: 30%;
+    }
+    
+    .result-container {
+      top: 30%;
+    }
+    
+    .question {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .love-message {
+      font-size: 1rem;
+    }
+    
+    .btn {
+      width: 180px;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    
+    .local-gif,
+    .gif-result {
+      max-width: 200px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .floating-hearts {
+      height: 50px;
+    }
+    
+    .floating-hearts .heart {
+      font-size: 1.2rem;
+    }
+    
+    body::before,
+    body::after {
+      display: none;
+    }
+  }
+
+  @media (max-width: 320px) {
+    .question {
+      font-size: 1.8rem;
+    }
+    
+    .subtitle {
+      font-size: 0.8rem;
+    }
+    
+    .btn {
+      width: 160px;
+      font-size: 13px;
+    }
+    
+    .local-gif,
+    .gif-result {
+      max-width: 180px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 800px;
+    }
+    
+    .question {
+      font-size: 4rem;
+    }
+    
+    .subtitle {
+      font-size: 1.4rem;
+    }
+    
+    .btn {
+      padding: 18px 35px;
+      font-size: 20px;
+    }
+    
+    .local-gif,
+    .gif-result {
+      max-width: 350px;
+    }
+  }
+
+  @media (orientation: landscape) and (max-height: 600px) {
+    .container {
+      top: 50%;
+    }
+    
+    .question-container {
+      top: 50%;
+    }
+    
+    .result-container {
+      top: 50%;
+    }
+    
+    .question {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .subtitle {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .local-gif,
+    .gif-result {
+      max-width: 150px;
+      margin-bottom: 1rem;
+    }
+    
+    .button-container {
+      margin-top: 1rem;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      font-size: 14px;
     }
   }
