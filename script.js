@@ -20,7 +20,7 @@ const cuteMessages = [
 
 let messageIndex = 0;
 
-noBtn.addEventListener("mouseover", () => {
+function moveNoButton() {
   // Get button dimensions
   const buttonWidth = noBtn.offsetWidth;
   const buttonHeight = noBtn.offsetHeight;
@@ -52,6 +52,31 @@ noBtn.addEventListener("mouseover", () => {
   setTimeout(() => {
     noBtn.style.animation = "";
   }, 500);
+}
+
+// Mouse events for desktop
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// Touch events for mobile
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveNoButton();
+});
+
+noBtn.addEventListener("touchend", (e) => {
+  e.preventDefault();
+});
+
+// Additional mobile event listeners
+noBtn.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+  moveNoButton();
+});
+
+// Fallback for any interaction
+noBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  moveNoButton();
 });
 
 const style = document.createElement('style');
